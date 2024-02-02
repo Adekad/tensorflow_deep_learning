@@ -1,0 +1,83 @@
+01-01 Introduction au Deep Learning
+    - Introduction à la Régression linéaire Y = WX + B
+    - Introduction au notion de Weigth W(le poids), Biais B, Learning Rate(Vitesse d'apprentissage), Loss(la fonction Erreur)          qui n'est rien d'autre que la moyenne de la différence au carré de Y réel et Pred(la prediction).
+    
+01-02 Dérivées
+    - Introduction au fonction composée, le Loss est une fonction composée
+    - Chain Rule: la dérivée d'une fonction composée est la dérivée successive des fonctions qui composent la fonction composée
+    - si la derivée de l'erreur est positive, diminuer w; si la derivée de l'erreur est négative, augmenter w
+    
+01-03 Dérivée d'une fonction composée
+    - Prolongement du notebook précédant en matérialisant la Chain Rule sous forme de code
+    - Introduction au notion de Forward Pass et Backward Pass
+    
+01-04 Vecteur, Matrice & Tenseur
+    - Introduction au Produit Matriciel
+    
+01-05 Nouvelle fonction & gradient
+    - Nouvelle fonction Loss et Gradient(Chain Rule) du fait du Produit Matriciel
+    - Notre Premiere Fonction Train(entrainement) pour l'entrainement de notre modele, il comporte :
+        * La fonction Loss afin de calculer l'erreur
+        * La fonction Gradient pour la propagation du gradient
+        * Mise à jour automatique du Poids W et du Biais en fonction de la dérivé de l'erreur(Gradient)
+    - La notion d'epoch
+    
+01-06 Régression linéaire
+    - Train Test split (diviser notre jeu de donnée en donnée d'entrainement Train et en donnée de Test)
+    - Standard scaler (Normalisation de la donnée)
+    - Evaluation sur les données test (MSE: Mean Squirt Error, MAE: Mean Absolute Error)
+    - Comparaison de notre regression linéaire à celui de Sklearn
+    
+01-07 Sigmoid
+    - Introduction d'une non linéarité (Sigmoid)
+    - Nouvelle fonction Loss, Gradient(Chain Rule) et Train du fait de la non linéarité
+    
+02-01 Recréer Tensorflow
+    - Les Classes Boite et BoiteParam(Forward et Backward)
+    - La classe Dot pour le Produit Matriciel WX
+    - La classe Add our l'addition WX + B
+    - La classe Sigmoid pour la non linéarité
+    - La classe Loss pour le calcul de l'erreur
+    - Vive du sujet: la classe Dense qui représente les couches(densements connectées): self.suite = []  # Pour stocker nos           opération successives(Dot + Add + Sigmoid(optionnel))
+    - La classe Model qui peut comporter plusieurs couche
+    - Chargement du modele our usage ultérieur
+    
+02-02 Le vrai Tensorflow
+    - model.save("model.h5") : sauvegarde du modele
+    
+03-01 Deep Learning pour la classification d'image(Fashion MNIST)
+    - Flatten (Applatir l'images)
+    - One Hot Encoding 
+    - La fonction Softmax (pour maximiser le loss) sur la dernière couche
+    - Normalisation de la donnée x/255
+    - Nouvelle fonction erreur MSE vs Cross-entropy ou Log loss
+    - Nouvelle fonction d'activation à la place de Sigmoid: Relu
+    - Combattre le Overfitting (Sur-apprentissage) : Dropout
+    - Adam optimizer (nouvelle optimisation à la place de SGBD...learning_rate)
+    - Les CallBacks: Model Checkpoint, Early Stopping
+    - PPrediction avec le modele sauvegardé
+    
+04-01 CNN(Convolutional Neural Network) pour la classification d'image(Poubelle Intelligente)
+    - Extraction des Caractéristiques
+        1) Application des filtres
+        2) MaxPooling (réduction de l'image en conservant que les caractéristiques importantes)
+    - Flatten (Applatir l'images)
+    - Couche Dense
+    - binary_crossentropy loss pour la classification binaire
+    - tf.keras.optimizers.RMSprop a l'aventage de modifier le lr au fur et à mesure de l'entrainement
+    - metrics=["accuracy"]
+    - Data Augmentation: augmenter nos datas d'entrainement. C'est à dire on cré une variante des images 
+      en changeant les caractéristiques à chaque variante
+    - Le transfert Learning
+    - L'API Sequential
+    - L'API Fonctionnel
+    - Utilisation des filtres de VGG 16
+    
+05-01 Introduction au NLP(Natural Language Proccessing) (Tout ce qui à avoir avec les application du texte et de la voix)
+        *Application: Reconnaissance vocale, Question Réponse(ChatBot), Génération de texte, Classification de texte, Topic Modelling, Extraction(Synthèse d'un rapport(ClicKup))
+    - La tokenization de texte
+    - Padding(limiter le nombre de mot dans une phrase)
+    - Embedding qui consiste à caractériser chaque mot du texte
+    - Stop words (enlever les mots qui ne portent pas le sens de la phrase) Exp: le, la, les, etc...
+    - Overfitting. Amélioration du modele par : Vocab_size, embedding_dimension, Architecture du Modele(nbre de couche,               optimizer, fonction loss, Max Len(la taille d'une phrase) + Dropout.
+    - Transfert Learning
